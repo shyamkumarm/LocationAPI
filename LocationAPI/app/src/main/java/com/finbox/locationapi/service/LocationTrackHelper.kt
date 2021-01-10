@@ -1,28 +1,30 @@
 package com.finbox.locationapi.service
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.finbox.locationapi.utils.Constants
+import com.google.common.util.concurrent.ListenableFuture
 
 
 class LocationTrackHelper(private val workRequest: PeriodicWorkRequest, context: Context) {
 
 
-    public val workManager: WorkManager = WorkManager.getInstance(context)
+    private val workManager: WorkManager = WorkManager.getInstance(context)
 
 
-    public fun startWork() =
+    fun startWork() =
         workManager.enqueueUniquePeriodicWork(
-            "Location",
+            Constants.WORK_MANAGER_UNIQUE_NAME,
             ExistingPeriodicWorkPolicy.REPLACE,
             workRequest
         )
 
 
-    public fun stopWork() = workManager.cancelAllWorkByTag(Constants.WORK_TAG)
+    fun stopWork() = workManager.cancelAllWorkByTag(Constants.WORK_TAG)
 
 
     public fun isWorkScheduled(): Boolean {
@@ -36,5 +38,9 @@ class LocationTrackHelper(private val workRequest: PeriodicWorkRequest, context:
             return running
         }
 
+    }
+
+    fun getResult(): LiveData<WorkInfo> {
+       return workManager.getWorkInfoByIdLiveData(workRequest.id)
     }
 }

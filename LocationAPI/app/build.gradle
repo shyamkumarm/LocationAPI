@@ -15,13 +15,13 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -52,7 +52,9 @@ dependencies {
     //Koin
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     implementation "androidx.room:room-runtime:$room_version"
-    implementation 'androidx.work:work-runtime:2.4.0'
+    implementation 'androidx.work:work-runtime:2.5.0-beta02'
+    // Kotlin
+    implementation "androidx.concurrent:concurrent-futures-ktx:1.1.0"
     kapt "androidx.room:room-compiler:$room_version"
 
     //Glide

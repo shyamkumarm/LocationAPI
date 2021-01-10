@@ -9,7 +9,10 @@ import com.finbox.locationapi.model.Location
 import com.finbox.locationapi.service.LocationTrackHelper
 
 
-class BusinessViewModel(private val dataBase: DataOperation,private val worker:LocationTrackHelper) : ViewModel() {
+class BusinessViewModel(
+    private val dataBase: DataOperation,
+    private val worker: LocationTrackHelper
+) : ViewModel() {
 
     var locationUIData = MutableLiveData<List<Location>>()
 
@@ -20,6 +23,6 @@ class BusinessViewModel(private val dataBase: DataOperation,private val worker:L
     fun startWork() = worker.startWork()
     fun stopWork() = worker.stopWork()
     fun isWorkRunning() = worker.isWorkScheduled()
-
+    fun getNotifyLocation() = worker.getResult()
 
 }

@@ -18,10 +18,9 @@ local.properties
 /gradlew.bat
 .gitignore
 
-build.gradle
+
 gradle.properties
 gradle/
 settings.gradle
 app/libs/
-app/build/
 .idea/codeStyles/

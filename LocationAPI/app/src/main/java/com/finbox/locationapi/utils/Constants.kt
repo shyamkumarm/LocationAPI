@@ -1,5 +1,7 @@
 package com.finbox.locationapi.utils
 
+import androidx.work.WorkManager
+
 object Constants{
 
 
@@ -22,4 +24,7 @@ object Constants{
 
     const val NOTIFICATION_ID: String = "notificationId"
     const val NOTIFICATION_CHANNEL_ID = 2
+    const val LOCATION_LAT = "LAT"
+    const val LOCATION_LONG = "LONG"
+    const val WORK_MANAGER_UNIQUE_NAME = "Location"
 }

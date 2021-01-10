@@ -1,10 +1,13 @@
 package com.finbox.locationapi.service
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.IntentSender
+import android.content.pm.PackageManager
 import android.provider.SyncStateContract
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.finbox.locationapi.utils.Constants
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
@@ -51,5 +54,16 @@ class LocationConfig(private val context: Context) {
                     }
                 }
             }
+    }
+
+    public fun isPermissionGranted(): Boolean {
+        return !(ActivityCompat.checkSelfPermission(
+            context,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(
+            context,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) != PackageManager.PERMISSION_GRANTED)
     }
 }

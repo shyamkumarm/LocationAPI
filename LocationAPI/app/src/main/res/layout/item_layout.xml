@@ -18,7 +18,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/dummy" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -28,7 +28,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/image_banner_view"
-            android:text="title"
+            android:text="@string/title"
             android:textSize="18sp"
             android:textStyle="bold" />
 
