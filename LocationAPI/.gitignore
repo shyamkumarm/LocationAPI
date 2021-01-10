@@ -24,3 +24,4 @@ gradle/
 settings.gradle
 app/libs/
 .idea/codeStyles/
+/.idea/vcs.xml
