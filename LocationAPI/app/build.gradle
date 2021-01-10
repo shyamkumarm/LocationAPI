@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.finbox.locationapi"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+       viewBinding  true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'    //Kotlin
+    implementation "androidx.core:core-ktx:$ktx_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //adding paging
+    implementation "android.arch.paging:runtime:$paging_version"
+    //Koin
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation 'androidx.work:work-runtime:2.4.0'
+    kapt "androidx.room:room-compiler:$room_version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt  "com.github.bumptech.glide:compiler:$glide_version"
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation "androidx.work:work-runtime-ktx:2.4.0"
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
