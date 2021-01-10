@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit
 
 private val appModule = module {
     fun getWorkRequest() = PeriodicWorkRequest.Builder(
-        MyWorker::class.java, 15,
-        TimeUnit.MINUTES
+        MyWorker::class.java, 1,
+        TimeUnit.Hours
     ).addTag(Constants.WORK_TAG)
         .build()
     single { LocationTrackHelper(getWorkRequest(), get()) }
